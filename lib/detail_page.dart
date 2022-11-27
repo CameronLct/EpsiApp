@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'product_model.dart';
 import 'checkbox.dart' as MyCheckbox;
@@ -25,6 +26,19 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             Text(product.nom,style: Theme.of(context).textTheme.headline6,),
+            RatingBar.builder(
+              minRating: 0,
+              itemCount: 5,
+              initialRating: product.getRatingProduct(),
+              allowHalfRating: true,
+              itemBuilder: (context, _) => const Icon(
+                Icons.star,
+                color: Colors.greenAccent,
+              ),
+              onRatingUpdate: (double value) {
+                product.rating = value;
+              },
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Description",style: Theme.of(context).textTheme.headline5,),

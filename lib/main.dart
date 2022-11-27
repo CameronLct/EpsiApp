@@ -12,7 +12,7 @@ import 'detail_page.dart';
 void main() {
   runApp(
       ChangeNotifierProvider<CartModel>(
-        create: (context) => CartModel(),
+        create: (context) => CartModel([]),
         child: EpsiShop(),
       )
   );
